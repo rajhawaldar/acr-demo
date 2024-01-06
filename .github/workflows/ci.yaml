@@ -11,4 +11,9 @@ jobs:
         - uses: actions/checkout@v3
         - run: docker build . -t myshell:${{github.sha}}
           name: build docker image
+        - uses: azure/docker-login@v1
+          with:
+            login-server: rajdummytest.azurecr.io
+            username: mytoken
+            password: ${{secrets.ACR_TOKEN}}
         
