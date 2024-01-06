@@ -16,4 +16,6 @@ jobs:
             login-server: rajdummytest.azurecr.io
             username: mytoken
             password: ${{secrets.ACR_TOKEN}}
+        - name: docker push
+          run: dcoekr push myshell:${{github.sha}}
         
