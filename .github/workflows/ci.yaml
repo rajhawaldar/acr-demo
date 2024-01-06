@@ -1,0 +1,14 @@
+name: CI
+
+on: 
+    push:
+        branches: ["main"]
+
+jobs:
+    build-docker-image:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v3
+        - run: docker build . -t myshell:${{github.sha}}
+          name: build docker image
+        
