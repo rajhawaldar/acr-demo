@@ -15,7 +15,7 @@ jobs:
           name: build docker image
         - uses: azure/docker-login@v1
           with:
-            login-server: rajdummytest.azurecr.io
+            login-server: ${{secrets.ACR_REPOSITORY}}
             username: mytoken
             password: ${{secrets.ACR_TOKEN}}
         - name: docker push
