@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v3
-        - run: docker build . -t rajdummytest.azurecr.io/myshell:${{github.sha}}
+        - run: docker build . -t ${{secrets.ACR_REPOSITORY}}/myshell:${{github.sha}}
           name: build docker image
         - uses: azure/docker-login@v1
           with:
@@ -19,5 +19,5 @@ jobs:
             username: mytoken
             password: ${{secrets.ACR_TOKEN}}
         - name: docker push
-          run: docker push rajdummytest.azurecr.io/myshell:${{github.sha}}
+          run: docker push ${{secrets.ACR_REPOSITORY}}/myshell:${{github.sha}}
         
